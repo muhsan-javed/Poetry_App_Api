@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".AddPoetry">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_poetry_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Add Poetry" />
+
+    <EditText
+        android:id="@+id/add_poetry_data"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/edittext_bg_design"
+        android:hint="@string/add_poetry_data"
+        android:inputType="text"
+        android:minHeight="40dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp" />
+
+    <EditText
+        android:id="@+id/add_poetry_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autofillHints=""
+        android:background="@drawable/edittext_bg_design"
+        android:hint="@string/add_name"
+        android:inputType="text"
+        android:minHeight="40dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit_data_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_bg_desing"
+        android:text="@string/submit"
+        android:textAllCaps="false" />
+
+</LinearLayout>

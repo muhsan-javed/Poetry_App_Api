@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Poetry App Api</string>
     <string name="_02_09_2021">02/09/2021</string>
+    <string name="add_name">Add Name</string>
+    <string name="submit">Submit</string>
+    <string name="add_poetry_data">Add Poetry Data</string>
+    <string name="update_your_poetry">Update Your Poetry</string>
+    <string name="update">Update</string>
 
 </resources>

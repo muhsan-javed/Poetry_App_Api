@@ -1,6 +1,7 @@
 package com.muhsantech.poetryappapi.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.muhsantech.poetryappapi.Api.ApiInterface;
 import com.muhsantech.poetryappapi.Model.PoetryModel;
 import com.muhsantech.poetryappapi.R;
 import com.muhsantech.poetryappapi.Response.DeleteResponse;
+import com.muhsantech.poetryappapi.UpdatePoetry;
 
 import java.util.List;
 
@@ -50,8 +52,15 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.ViewHolder
         holder.poetryData.setText(poetryModelList.get(position).getPoetry_data());
         holder.date_time.setText(poetryModelList.get(position).getDateTime());
 
-        holder.deleteBtn.setOnClickListener(view -> {
-            deletePoetry(poetryModelList.get(position).getId() + "" , position);
+        holder.deleteBtn.setOnClickListener(view -> deletePoetry(poetryModelList.get(position).getId() + "", position));
+
+        holder.updateBtn.setOnClickListener(view -> {
+            //Toast.makeText(context,poetryModelList.get(position).getId() + "\n" + poetryModelList.get(position), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, UpdatePoetry.class);
+            intent.putExtra("p_id", poetryModelList.get(position).getId());
+            intent.putExtra("p_data", poetryModelList.get(position).getPoetry_data());
+            context.startActivity(intent);
+
         });
     }
 
@@ -80,13 +89,12 @@ public class PoetryAdapter extends RecyclerView.Adapter<PoetryAdapter.ViewHolder
             @Override
             public void onResponse(Call<DeleteResponse> call, Response<DeleteResponse> response) {
                 try {
-                    if (response != null) {
-                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                    assert response.body() != null;
+                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
 
-                        if (response.body().getStatus().equals("1")) {
-                            poetryModelList.remove(pose);
-                            notifyDataSetChanged();
-                        }
+                    if (response.body().getStatus().equals("1")) {
+                        poetryModelList.remove(pose);
+                        notifyDataSetChanged();
                     }
                 } catch (Exception e) {
                     Log.e("exp", e.getLocalizedMessage());
